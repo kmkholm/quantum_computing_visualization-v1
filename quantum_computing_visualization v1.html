@@ -646,9 +646,69 @@
             animation: quantum-shimmer 2s ease-in-out infinite;
         }
 
-        @keyframes quantum-shimmer {
-            0%, 100% { filter: hue-rotate(0deg) brightness(1); }
-            50% { filter: hue-rotate(180deg) brightness(1.2); }
+        @keyframes wave-motion {
+            from { transform: translateX(-33%); }
+            to { transform: translateX(0%); }
+        }
+
+        @keyframes particle-bounce {
+            0%, 100% { transform: translateX(-80px); }
+            50% { transform: translateX(80px); }
+        }
+
+        @keyframes shape-morph {
+            0% { 
+                border-radius: 50%; 
+                background-position: 0% 50%; 
+                transform: rotate(0deg) scale(1);
+            }
+            25% { 
+                border-radius: 20%; 
+                background-position: 50% 0%; 
+                transform: rotate(90deg) scale(1.1);
+            }
+            50% { 
+                border-radius: 10px; 
+                background-position: 100% 50%; 
+                transform: rotate(180deg) scale(0.9);
+            }
+            75% { 
+                border-radius: 40%; 
+                background-position: 50% 100%; 
+                transform: rotate(270deg) scale(1.1);
+            }
+            100% { 
+                border-radius: 50%; 
+                background-position: 0% 50%; 
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        @keyframes spin-coin {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        @keyframes collapse-effect {
+            0%, 80% { 
+                border-radius: 50%; 
+                background: linear-gradient(45deg, #ff4444, #44ff44, #4444ff);
+                transform: scale(1.2);
+            }
+            85% { 
+                transform: scale(0.8);
+                border-radius: 30%;
+            }
+            90% { 
+                transform: scale(1.1);
+                border-radius: 15px;
+                background: linear-gradient(45deg, #44ff44, #88ff88);
+            }
+            100% { 
+                transform: scale(1);
+                border-radius: 10px;
+                background: linear-gradient(45deg, #44ff44, #88ff88);
+            }
         }
 
         .matrix-rain {
@@ -686,9 +746,235 @@
         </div>
 
         <div class="section">
+            <h2>⚙️ How Quantum Computing Actually Works</h2>
+            <div style="background: rgba(128,0,255,0.1); padding: 30px; border-radius: 20px; border: 2px solid #8000ff;">
+                <h3 style="text-align: center; color: #8000ff; margin-bottom: 30px;">🏗️ The Quantum Computing Process</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin: 30px 0;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border-left: 5px solid #ff0080; position: relative;">
+                        <div style="position: absolute; top: -15px; right: 20px; background: #ff0080; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold;">Step 1</div>
+                        <h4 style="color: #ff0080;">🎯 Initialization</h4>
+                        <div style="text-align: center; margin: 15px 0;">
+                            <div style="width: 60px; height: 60px; margin: 0 auto; background: linear-gradient(45deg, #333, #666); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5em; color: white;">|0⟩</div>
+                        </div>
+                        <p>Start with qubits in the ground state |0⟩. All quantum computation begins here.</p>
+                        <div style="text-align: center; margin-top: 10px; color: #ff0080;">|ψ₀⟩ = |000...0⟩</div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border-left: 5px solid #00ffff; position: relative;">
+                        <div style="position: absolute; top: -15px; right: 20px; background: #00ffff; color: black; padding: 5px 15px; border-radius: 20px; font-weight: bold;">Step 2</div>
+                        <h4 style="color: #00ffff;">🌊 Superposition</h4>
+                        <div style="text-align: center; margin: 15px 0;">
+                            <div style="width: 60px; height: 60px; margin: 0 auto; background: linear-gradient(45deg, #00ffff, #ff0080, #ffff00); background-size: 200% 200%; animation: quantum-state 2s ease-in-out infinite; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2em; color: white;">H</div>
+                        </div>
+                        <p>Apply Hadamard gates to create superposition - now each qubit is 0 AND 1!</p>
+                        <div style="text-align: center; margin-top: 10px; color: #00ffff;">|ψ₁⟩ = (|0⟩ + |1⟩)ⁿ/√2ⁿ</div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border-left: 5px solid #ffff00; position: relative;">
+                        <div style="position: absolute; top: -15px; right: 20px; background: #ffff00; color: black; padding: 5px 15px; border-radius: 20px; font-weight: bold;">Step 3</div>
+                        <h4 style="color: #ffff00;">🔗 Entanglement</h4>
+                        <div style="text-align: center; margin: 15px 0;">
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+                                <div style="width: 30px; height: 30px; background: radial-gradient(circle, #ff0080, #8000ff); border-radius: 50%; animation: entangled-spin 2s linear infinite;"></div>
+                                <div style="color: #ffff00; font-size: 1.5em;">⚡</div>
+                                <div style="width: 30px; height: 30px; background: radial-gradient(circle, #ff0080, #8000ff); border-radius: 50%; animation: entangled-spin 2s linear infinite reverse;"></div>
+                            </div>
+                        </div>
+                        <p>Use CNOT gates to create quantum correlations between qubits.</p>
+                        <div style="text-align: center; margin-top: 10px; color: #ffff00;">|ψ₂⟩ = entangled state</div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border-left: 5px solid #ff8000; position: relative;">
+                        <div style="position: absolute; top: -15px; right: 20px; background: #ff8000; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold;">Step 4</div>
+                        <h4 style="color: #ff8000;">🎭 Interference</h4>
+                        <div style="text-align: center; margin: 15px 0;">
+                            <div style="width: 100px; height: 40px; margin: 0 auto; position: relative; background: rgba(0,0,0,0.3); border-radius: 10px; overflow: hidden;">
+                                <div style="position: absolute; width: 200%; height: 100%; background: repeating-linear-gradient(90deg, transparent 0px, rgba(255,128,0,0.6) 10px, transparent 20px); animation: wave-motion 2s linear infinite;"></div>
+                            </div>
+                        </div>
+                        <p>Quantum interference amplifies correct answers and cancels wrong ones.</p>
+                        <div style="text-align: center; margin-top: 10px; color: #ff8000;">Constructive + Destructive</div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border-left: 5px solid #44ff44; position: relative;">
+                        <div style="position: absolute; top: -15px; right: 20px; background: #44ff44; color: black; padding: 5px 15px; border-radius: 20px; font-weight: bold;">Step 5</div>
+                        <h4 style="color: #44ff44;">🔬 Measurement</h4>
+                        <div style="text-align: center; margin: 15px 0;">
+                            <div style="width: 60px; height: 60px; margin: 0 auto; background: linear-gradient(45deg, #44ff44, #88ff88); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5em; color: white; animation: collapse-effect 3s ease-in-out infinite;">📊</div>
+                        </div>
+                        <p>Measurement collapses the quantum state to classical bits - the answer!</p>
+                        <div style="text-align: center; margin-top: 10px; color: #44ff44;">|ψ⟩ → |answer⟩</div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 15px; margin: 30px 0; border: 2px solid #8000ff;">
+                    <h4 style="color: #8000ff; text-align: center; margin-bottom: 20px;">🧠 Why This is Exponentially Powerful</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
+                        <div>
+                            <h5 style="color: #ff0080;">Classical Computer:</h5>
+                            <div style="margin: 15px 0;">
+                                <div style="font-size: 1.2em; color: #ff4444;">n bits → 1 computation path</div>
+                                <div style="margin: 10px 0;">
+                                    <div style="width: 100%; height: 20px; background: #ff4444; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.9em;">Sequential Processing</div>
+                                </div>
+                                <div style="font-size: 0.9em; color: #ff8888;">Time: O(2ⁿ) for many problems</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 style="color: #00ffff;">Quantum Computer:</h5>
+                            <div style="margin: 15px 0;">
+                                <div style="font-size: 1.2em; color: #00ffff;">n qubits → 2ⁿ simultaneous paths</div>
+                                <div style="margin: 10px 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;">
+                                    <div style="height: 15px; background: linear-gradient(45deg, #00ffff, #ff0080); border-radius: 5px;"></div>
+                                    <div style="height: 15px; background: linear-gradient(45deg, #00ffff, #ff0080); border-radius: 5px;"></div>
+                                    <div style="height: 15px; background: linear-gradient(45deg, #00ffff, #ff0080); border-radius: 5px;"></div>
+                                    <div style="height: 15px; background: linear-gradient(45deg, #00ffff, #ff0080); border-radius: 5px;"></div>
+                                </div>
+                                <div style="font-size: 0.9em; color: #88ffff;">Time: O(√2ⁿ) or O(n³) for some problems</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <h2>⚛️ What IS Quantum? The Fundamental Nature</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 30px 0;">
+                <div style="background: rgba(255,0,128,0.1); padding: 25px; border-radius: 15px; border: 2px solid #ff0080;">
+                    <h3>🌊 Wave Nature</h3>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <div style="width: 200px; height: 60px; margin: 0 auto; position: relative; background: rgba(0,0,0,0.3); border-radius: 10px; overflow: hidden;">
+                            <div style="position: absolute; width: 300%; height: 100%; background: repeating-linear-gradient(90deg, transparent 0px, rgba(0,255,255,0.6) 20px, transparent 40px); animation: wave-motion 3s linear infinite;"></div>
+                        </div>
+                        <p style="margin-top: 10px; color: #00ffff;">ψ(x,t) = A sin(kx - ωt)</p>
+                    </div>
+                    <p>Particles exhibit <strong>wave-like properties</strong>: interference, diffraction, superposition. They can be in multiple places simultaneously!</p>
+                </div>
+                
+                <div style="background: rgba(0,255,255,0.1); padding: 25px; border-radius: 15px; border: 2px solid #00ffff;">
+                    <h3>🎯 Particle Nature</h3>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <div style="width: 200px; height: 60px; margin: 0 auto; position: relative; background: rgba(0,0,0,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                            <div style="width: 20px; height: 20px; background: radial-gradient(circle, #ff0080, #ff8040); border-radius: 50%; animation: particle-bounce 2s ease-in-out infinite; box-shadow: 0 0 15px #ff0080;"></div>
+                        </div>
+                        <p style="margin-top: 10px; color: #ff0080;">E = hf, p = h/λ</p>
+                    </div>
+                    <p>But when <strong>measured</strong>, they behave like discrete particles with definite positions and momentum!</p>
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,0,0.1); padding: 30px; border-radius: 20px; border: 2px solid #ffff00; margin: 30px 0;">
+                <h3 style="text-align: center; color: #ffff00; font-size: 2em;">🤯 The Quantum Paradox</h3>
+                <div style="text-align: center; margin: 30px 0;">
+                    <div style="font-size: 3em; margin: 20px 0;">🌊 ➡️ 🔬 ➡️ 🎯</div>
+                    <p style="font-size: 1.3em; color: #ffff00;">Wave → Measurement → Particle</p>
+                    <p style="font-size: 1.1em; margin-top: 15px;">
+                        Before measurement: <strong>Superposition</strong> (all possibilities exist)<br>
+                        During measurement: <strong>Collapse</strong> (one reality emerges)
+                    </p>
+                </div>
+                <div class="quantum-math">
+                    <div class="formula">|ψ⟩ = α|0⟩ + β|1⟩ → measurement → |0⟩ or |1⟩</div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;">
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; text-align: center;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">🎲</div>
+                    <h4>Uncertainty Principle</h4>
+                    <p>Δx · Δp ≥ ℏ/2</p>
+                    <p style="font-size: 0.9em;">Can't know position AND momentum exactly</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; text-align: center;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">🔗</div>
+                    <h4>Entanglement</h4>
+                    <p>|ψ⟩ = (|00⟩ + |11⟩)/√2</p>
+                    <p style="font-size: 0.9em;">Particles become mysteriously connected</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; text-align: center;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">🌀</div>
+                    <h4>Interference</h4>
+                    <p>ψ₁ + ψ₂ = ψtotal</p>
+                    <p style="font-size: 0.9em;">Waves can cancel or amplify each other</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔄 How Quantum Shapes Transform</h2>
+            <div style="background: rgba(0,0,0,0.4); padding: 30px; border-radius: 20px; border: 2px solid rgba(0,255,255,0.3);">
+                <h3 style="color: #00ffff; text-align: center; margin-bottom: 30px;">Shape Evolution Demonstration</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                    <div style="text-align: center;">
+                        <h4>Classical Bit</h4>
+                        <div style="width: 80px; height: 80px; margin: 20px auto; border-radius: 10px; background: linear-gradient(45deg, #ff4444, #ff8888); display: flex; align-items: center; justify-content: center; font-size: 2em; color: white; box-shadow: 0 0 20px #ff4444;">0</div>
+                        <p>🔒 Fixed shape, definite state</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <h4>Quantum Superposition</h4>
+                        <div style="width: 80px; height: 80px; margin: 20px auto; border-radius: 50%; background: linear-gradient(45deg, #ff4444, #44ff44, #4444ff); background-size: 200% 200%; animation: shape-morph 2s ease-in-out infinite; display: flex; align-items: center; justify-content: center; font-size: 1.5em; color: white; box-shadow: 0 0 20px #00ffff;">±</div>
+                        <p>🌊 Shape constantly changing</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <h4>After Measurement</h4>
+                        <div style="width: 80px; height: 80px; margin: 20px auto; border-radius: 10px; background: linear-gradient(45deg, #44ff44, #88ff88); display: flex; align-items: center; justify-content: center; font-size: 2em; color: white; box-shadow: 0 0 20px #44ff44; animation: collapse-effect 3s ease-in-out infinite;">1</div>
+                        <p>💥 Collapses to definite state</p>
+                    </div>
+                </div>
+
+                <div style="margin: 40px 0; text-align: center;">
+                    <h4 style="color: #ffff00;">🎭 Shape Meanings in Quantum Physics</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 2em;">⭕</div>
+                            <strong>Circle/Sphere</strong><br>
+                            Represents all possible quantum states
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 2em;">📐</div>
+                            <strong>Vector/Arrow</strong><br>
+                            Shows current quantum state direction
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 2em;">🌊</div>
+                            <strong>Wave Pattern</strong><br>
+                            Probability amplitude distribution
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
             <h2>🌟 Interactive Bloch Sphere Visualization</h2>
+            <div style="background: rgba(0,255,255,0.1); padding: 20px; border-radius: 15px; margin-bottom: 30px; border: 1px solid rgba(0,255,255,0.3);">
+                <h3>🔍 What is a Bloch Sphere?</h3>
+                <p style="font-size: 1.1em; line-height: 1.6;">
+                    The <strong>Bloch Sphere</strong> is a 3D geometric representation of all possible quantum states of a qubit. 
+                    Unlike classical bits that can only be 0 or 1, qubits exist as points on this sphere's surface, 
+                    allowing infinite possibilities between |0⟩ and |1⟩ states through <em>superposition</em>.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em;">🔴</div>
+                        <strong>North Pole |0⟩</strong><br>
+                        Classical "0" state
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em;">🟡</div>
+                        <strong>Equator |+⟩</strong><br>
+                        Perfect superposition
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em;">🔵</div>
+                        <strong>South Pole |1⟩</strong><br>
+                        Classical "1" state
+                    </div>
+                </div>
+            </div>
             <p style="font-size: 1.2em; margin-bottom: 30px;">
-                Click on the qubits to see different quantum states on the Bloch sphere!
+                Click on the qubits to see different quantum states on the Bloch sphere! Watch how the vector changes!
             </p>
             <div class="qubit-arena">
                 <div class="qubit-sphere" onclick="toggleQubitState(0)">
@@ -717,8 +1003,42 @@
 
         <div class="section">
             <h2>🔧 Quantum Circuit Simulator</h2>
+            <div style="background: rgba(255,0,128,0.1); padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #ff0080;">
+                <h3>🎛️ Understanding Quantum Gates</h3>
+                <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 20px;">
+                    Quantum gates are the building blocks of quantum computation. Unlike classical logic gates that work with definite 0s and 1s, 
+                    quantum gates manipulate <strong>probability amplitudes</strong> and <strong>quantum phases</strong>, allowing operations on superposition states.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2.5em; color: #00ffff;">H</div>
+                        <strong>Hadamard</strong><br>
+                        <span style="color: #00ffff;">Creates superposition</span><br>
+                        <small>|0⟩ → (|0⟩ + |1⟩)/√2</small>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2.5em; color: #ff0080;">X</div>
+                        <strong>Pauli-X</strong><br>
+                        <span style="color: #ff0080;">Quantum NOT</span><br>
+                        <small>|0⟩ ↔ |1⟩</small>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2.5em; color: #ffff00;">⊕</div>
+                        <strong>CNOT</strong><br>
+                        <span style="color: #ffff00;">Creates entanglement</span><br>
+                        <small>|00⟩ → |00⟩, |10⟩ → |11⟩</small>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2.5em; color: #ff8000;">📊</div>
+                        <strong>Measure</strong><br>
+                        <span style="color: #ff8000;">Collapses state</span><br>
+                        <small>|ψ⟩ → |0⟩ or |1⟩</small>
+                    </div>
+                </div>
+            </div>
             <p style="font-size: 1.2em; margin-bottom: 30px;">
-                Click on the quantum gates to see them in action!
+                Click on the quantum gates to see them in action! Watch how they transform the quantum circuit!
             </p>
             <div class="quantum-circuit">
                 <div class="circuit-wire">
@@ -739,6 +1059,59 @@
 
         <div class="section">
             <h2>🌊 Superposition Laboratory</h2>
+            <div style="background: rgba(0,255,255,0.1); padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #00ffff;">
+                <h3>🎯 What is Superposition?</h3>
+                <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 20px;">
+                    <strong>Superposition</strong> is quantum mechanics' most mind-bending feature. While classical objects exist in one definite state, 
+                    quantum objects can exist in <em>multiple states simultaneously</em> until measured. Think of it as nature's way of exploring 
+                    all possibilities at once!
+                </p>
+                
+                <div style="display: flex; justify-content: space-around; align-items: center; margin: 30px 0; flex-wrap: wrap;">
+                    <div style="text-align: center; margin: 10px;">
+                        <div style="font-size: 3em;">🪙</div>
+                        <strong>Classical Coin</strong><br>
+                        <span style="color: #ff4444;">Either heads OR tails</span>
+                    </div>
+                    <div style="font-size: 2em; color: #ffff00;">VS</div>
+                    <div style="text-align: center; margin: 10px;">
+                        <div style="font-size: 3em; animation: spin-coin 2s linear infinite;">🪙</div>
+                        <strong>Quantum "Coin"</strong><br>
+                        <span style="color: #00ffff;">Heads AND tails simultaneously!</span>
+                    </div>
+                </div>
+
+                <div class="quantum-math">
+                    <div class="formula" style="font-size: 1.5em;">
+                        |ψ⟩ = α|0⟩ + β|1⟩
+                    </div>
+                    <p style="text-align: center; margin: 15px 0; font-size: 1.1em;">
+                        Where: |α|² + |β|² = 1 (probability conservation)<br>
+                        α and β are <strong>complex numbers</strong> (amplitude + phase)
+                    </p>
+                </div>
+
+                <div style="background: rgba(255,255,0,0.1); padding: 20px; border-radius: 10px; margin: 20px 0; border: 1px solid #ffff00;">
+                    <h4 style="color: #ffff00; text-align: center;">🧠 Superposition Examples</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 15px 0;">
+                        <div style="text-align: center;">
+                            <strong>|+⟩ state</strong><br>
+                            <span style="color: #00ffff;">(|0⟩ + |1⟩)/√2</span><br>
+                            50% each
+                        </div>
+                        <div style="text-align: center;">
+                            <strong>|-⟩ state</strong><br>
+                            <span style="color: #00ffff;">(|0⟩ - |1⟩)/√2</span><br>
+                            50% each, opposite phase
+                        </div>
+                        <div style="text-align: center;">
+                            <strong>Custom state</strong><br>
+                            <span style="color: #00ffff;">0.8|0⟩ + 0.6|1⟩</span><br>
+                            64% vs 36%
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="superposition-lab">
                 <div class="wave-function">
                     <h3>Wave Function |ψ⟩</h3>
@@ -769,8 +1142,80 @@
 
         <div class="section">
             <h2>🔗 Quantum Entanglement Chamber</h2>
+            <div style="background: rgba(255,255,0,0.1); padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #ffff00;">
+                <h3>👻 Einstein's "Spooky Action at a Distance"</h3>
+                <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 20px;">
+                    <strong>Quantum Entanglement</strong> is perhaps the strangest phenomenon in physics. When particles become entangled, 
+                    they form a single quantum system where measuring one particle <em>instantly affects the other</em>, 
+                    regardless of the distance between them - even across galaxies!
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 25px 0;">
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2.5em; margin-bottom: 10px;">🎭</div>
+                        <strong>Before Entanglement</strong><br>
+                        <span style="color: #ff0080;">|0⟩ ⊗ |0⟩</span><br>
+                        <small>Independent particles</small>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2.5em; margin-bottom: 10px;">⚡</div>
+                        <strong>Creating Entanglement</strong><br>
+                        <span style="color: #00ffff;">CNOT Gate</span><br>
+                        <small>Quantum correlation</small>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 2.5em; margin-bottom: 10px;">🔗</div>
+                        <strong>Bell State</strong><br>
+                        <span style="color: #ffff00;">(|00⟩ + |11⟩)/√2</span><br>
+                        <small>Inseparable system</small>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,0,128,0.1); padding: 20px; border-radius: 15px; margin: 20px 0; border: 1px solid #ff0080;">
+                    <h4 style="color: #ff0080; text-align: center;">🔮 The Four Bell States</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; margin: 15px 0; text-align: center;">
+                        <div>
+                            <strong>|Φ⁺⟩</strong><br>
+                            <span style="color: #00ffff;">(|00⟩ + |11⟩)/√2</span>
+                        </div>
+                        <div>
+                            <strong>|Φ⁻⟩</strong><br>
+                            <span style="color: #00ffff;">(|00⟩ - |11⟩)/√2</span>
+                        </div>
+                        <div>
+                            <strong>|Ψ⁺⟩</strong><br>
+                            <span style="color: #00ffff;">(|01⟩ + |10⟩)/√2</span>
+                        </div>
+                        <div>
+                            <strong>|Ψ⁻⟩</strong><br>
+                            <span style="color: #00ffff;">(|01⟩ - |10⟩)/√2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 25px 0;">
+                    <h4 style="color: #ffff00;">🚀 Why Entanglement is Revolutionary</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 2em;">🔐</div>
+                            <strong>Quantum Cryptography</strong><br>
+                            <small>Unbreakable communication</small>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 2em;">📡</div>
+                            <strong>Quantum Internet</strong><br>
+                            <small>Instantaneous information</small>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
+                            <div style="font-size: 2em;">🧮</div>
+                            <strong>Quantum Computing</strong><br>
+                            <small>Exponential parallelism</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <p style="font-size: 1.2em; margin-bottom: 30px;">
-                Watch the spooky action at a distance! These qubits are quantum entangled.
+                Watch the spooky action at a distance! These qubits are quantum entangled - measuring one affects the other instantly!
             </p>
             <div class="entanglement-chamber">
                 <div class="entangled-pair">
@@ -794,6 +1239,94 @@
 
         <div class="section">
             <h2>🚀 Quantum Algorithm Simulator</h2>
+            <div style="background: rgba(255,128,0,0.1); padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #ff8000;">
+                <h3>🧮 Revolutionary Quantum Algorithms</h3>
+                <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 20px;">
+                    Quantum algorithms leverage quantum mechanical phenomena to solve problems that would take classical computers 
+                    longer than the age of the universe. These aren't just faster versions of classical algorithms - 
+                    they're fundamentally different computational approaches!
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 25px 0;">
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ff0080;">
+                        <div style="font-size: 2.5em; margin-bottom: 10px;">🔐</div>
+                        <strong style="color: #ff0080;">Shor's Algorithm</strong><br>
+                        <small style="color: #ff8080;">Breaks RSA encryption</small><br>
+                        <div style="margin: 10px 0; font-size: 0.9em;">
+                            Classical: 2^n time<br>
+                            Quantum: n³ time
+                        </div>
+                        <div style="background: rgba(255,0,128,0.2); padding: 5px; border-radius: 5px; margin-top: 10px;">
+                            <small>💥 EXPONENTIAL SPEEDUP</small>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #00ffff;">
+                        <div style="font-size: 2.5em; margin-bottom: 10px;">🔍</div>
+                        <strong style="color: #00ffff;">Grover's Algorithm</strong><br>
+                        <small style="color: #88ffff;">Searches databases</small><br>
+                        <div style="margin: 10px 0; font-size: 0.9em;">
+                            Classical: N steps<br>
+                            Quantum: √N steps
+                        </div>
+                        <div style="background: rgba(0,255,255,0.2); padding: 5px; border-radius: 5px; margin-top: 10px;">
+                            <small>⚡ QUADRATIC SPEEDUP</small>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ffff00;">
+                        <div style="font-size: 2.5em; margin-bottom: 10px;">📡</div>
+                        <strong style="color: #ffff00;">Quantum Teleportation</strong><br>
+                        <small style="color: #ffff88;">Transfers quantum states</small><br>
+                        <div style="margin: 10px 0; font-size: 0.9em;">
+                            Classical: Impossible<br>
+                            Quantum: 2 classical bits
+                        </div>
+                        <div style="background: rgba(255,255,0,0.2); padding: 5px; border-radius: 5px; margin-top: 10px;">
+                            <small>🚀 IMPOSSIBLE → POSSIBLE</small>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ff8000;">
+                        <div style="font-size: 2.5em; margin-bottom: 10px;">⚛️</div>
+                        <strong style="color: #ff8000;">Quantum Simulation</strong><br>
+                        <small style="color: #ffaa66;">Simulates nature</small><br>
+                        <div style="margin: 10px 0; font-size: 0.9em;">
+                            Classical: Exponential<br>
+                            Quantum: Polynomial
+                        </div>
+                        <div style="background: rgba(255,128,0,0.2); padding: 5px; border-radius: 5px; margin-top: 10px;">
+                            <small>🧬 NATURAL SIMULATION</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin: 20px 0;">
+                    <h4 style="color: #ff8000; text-align: center;">🎯 Why These Algorithms Change Everything</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 15px 0;">
+                        <div>
+                            <strong style="color: #ff0080;">🔒 Cryptography Revolution:</strong><br>
+                            Current internet security (RSA, ECC) becomes obsolete overnight. 
+                            We need quantum-resistant cryptography NOW!
+                        </div>
+                        <div>
+                            <strong style="color: #00ffff;">🧬 Drug Discovery:</strong><br>
+                            Simulate molecular interactions perfectly. Design new medicines 
+                            by understanding quantum chemistry naturally.
+                        </div>
+                        <div>
+                            <strong style="color: #ffff00;">🤖 AI Enhancement:</strong><br>
+                            Quantum machine learning could solve optimization problems 
+                            that classical AI cannot even approach.
+                        </div>
+                        <div>
+                            <strong style="color: #ff8000;">⚗️ Materials Science:</strong><br>
+                            Design superconductors, solar cells, and batteries 
+                            by simulating quantum properties directly.
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="algorithm-simulator">
                 <div class="algorithm-controls">
                     <button class="control-button" onclick="runShorAlgorithm()">🔐 Shor's Algorithm</button>
